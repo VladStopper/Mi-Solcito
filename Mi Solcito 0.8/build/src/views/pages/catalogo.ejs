@@ -1,0 +1,87 @@
+<%- include('../partials/head'); %>
+<link rel="stylesheet" href="/assets/css/index-styles.css">
+<link rel="stylesheet" href="/assets/css/catalogo-styles.css">
+<link rel="stylesheet" href="/assets/css/cards.css">
+<%- include('../partials/nav'); %>
+<main id="catalogo">
+    <section class="aside__container">
+        <div class="filter__container">
+            <h4 class="filter__title">
+                <span class="filter__arrow--show">
+                    <img src="/assets/icons/arrow-up.png" class="filter__arrow_img">
+                </span>
+                Categorías:
+            </h4>
+            <div class="filter__elements filter--show">
+                <% let img = [] %>
+                <% let names = [] %>
+                <% resultsTipoProducto.forEach(Tipo => { %>
+                    <div class="category">
+                        <input type="checkbox" value="type<%= Tipo.id_tipo_producto %>" class="category_filter" onclick="filter: filter()">
+                        <label for="chkbox"><%= Tipo.nombre %></label>
+                        <% img.push(Tipo.nombre) %>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </section>
+
+    <section class="products__container">
+        <% resultsProductosCatalogo.forEach((Producto, i) => { %>
+            <style>
+                input[id='chk<%= Producto.id_producto %>']:checked ~ .front {
+                    transform: perspective(500px) rotateY(-180deg);
+                }
+
+                input[id='chk<%= Producto.id_producto %>']:checked ~ .back {
+                    transform: perspective(500px) rotateY(0deg);
+                }
+
+                label[id='chk<%= Producto.id_producto %>'] {
+                    cursor: pointer;
+                }
+            </style>
+            <div class="cards" name="type<%= Producto.tipo_producto_id %>" class="card">
+                <input type="checkbox" name="change" id="chk<%= Producto.id_producto %>">
+                <div class="front">
+                    <figure class="image_card">
+                        <img src="assets/images/<%= img[i] %>.png">
+                    </figure>
+                    <div class="title">
+                        <h4><%= Producto.nombre %></h4>
+                    </div>
+                    <div class="text">
+                        <p>Tipo de Arma:</p>
+                        <p>Munición:</p>
+                    </div>
+                    <div class="btns__section_cards_bc">
+                        <label for="chk<%= Producto.id_producto %>" class="label_btn">
+                            <div class="cards__bt">
+                                <h6 class="text_card_bt">Ver Más</h6>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="back">
+                    <div class="title">
+                        <h4><%= Producto.nombre %></h4>
+                    </div>
+                    <div class="text">
+                        <p>Descripción: <%= Producto.descripcion %></p>
+                        <p>Precio: <%= Producto.precio %></p>
+                    </div>
+                    <div class="btns__section_cards_bc">
+                        <label for="chk<%= Producto.id_producto %>" class="label_btn">
+                            <div class="cards__bt">
+                                <h6 class="text_card_bt">Ver Menos</h6>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </section>
+</main>
+<script src="/js/filter.js"></script>
+<script src="/js/filter_toggle.js"></script>
+<%- include('../partials/footer'); %>

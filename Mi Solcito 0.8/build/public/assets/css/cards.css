@@ -1,0 +1,161 @@
+
+
+/* Formato y Diseño */
+
+.cards{
+    height: 510px;
+    width: 250px;
+    /* border: solid;
+    border-width: 1px; */
+    text-align: center;
+    align-items: center;
+    padding: 10px 20px 40px 20px;
+    display: grid;
+    grid-template-rows: 20px 40px 1fr 40px;
+
+
+    /* Flip-Card */
+    transform-style: preserve-3d;
+    transition: .7s ease;
+    backface-visibility: hidden;
+}
+
+
+
+.front, .back{
+    height: 510px;
+    width: 250px;
+    border: solid;
+    border-width: 1px;
+    text-align: center;
+    align-items: center;
+    display: grid;
+
+    position: absolute;
+    
+    /* Diseño */
+    box-shadow: 20px 20px 50px rgba(5, 1, 77, 0.5);
+    background: rgba(60, 9, 117, 0.1);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+
+
+    /* Flip Card */
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: .7s ease;
+}
+
+.front{
+    grid-template-rows: 200px 40px 1fr 40px;
+    padding: 10px 20px 40px 20px;
+    transform: rotateY(0deg);
+}
+
+.back{
+    grid-template-rows:60px 1fr 40px;
+    padding: 30px 20px 40px 20px;
+    transform: rotateY(180deg);
+}
+
+
+
+
+.image_card{
+    max-height: 200px;
+    max-width: 100%;
+    margin: 0px;
+    justify-content: center;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 400;
+    /* margin-top: 20px; */
+    color: #fff;
+}
+
+.text{
+    align-self: baseline;
+    text-align: left;
+    padding: 0px 10px;
+}
+
+
+.cards p{
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 300;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+.btns__section_cards_fr{
+    display: grid;
+    grid-template-columns: auto;
+    gap: 1em;
+}
+
+.btns__section_cards_bc{
+    display: grid;
+    grid-template-columns: auto;
+    gap: 1em;
+}
+
+.label_btn{
+    border-radius: 10px;
+    box-shadow: 0 0 3px rgba(255, 255, 255, 0.507);
+    align-self: center;
+}
+
+.cards__bt{
+    padding: 10px 10px;
+    
+    background-color: var(--bg-card);
+    font-weight: 600;
+    color: #fff;
+    
+}
+
+.text_card_bt{
+    margin: 0px;
+    padding: 4px 0px;
+}
+
+
+
+.cover__card{
+    width: 100%;
+    height: 180px;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.cover__card img{
+    width: 110%;
+    transition: all 300ms;
+}
+
+.cards:hover{
+    transform: translateY(-15px);
+}
+
+.cards:hover .cover__card img{
+    transform: scale(1.1);
+}
+
+.cards__bt:hover{
+    text-shadow: 0 0 5px rgb(255, 255, 255)
+}
+
+
+
+/* ----------------------------------------- FLIP CARD -------------------------------------- */
+
+
+input[name="change"]{
+    display: none;
+}
+
